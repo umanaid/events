@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px; /* Add margin to create space from the page edges */
+            padding: 0;
+            background-image: url('/static/chat.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+        
+        .button-52 {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button-52:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            color: #fff; /* Change heading color */
+            text-align: center;
+            margin-bottom: 20px; /* Add margin to create space below the heading */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .msg-inbox {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .chats {
+            margin-bottom: 10px;
+        }
+
+        .incoming-msg, .outgoing-msg {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .incoming-msg {
+            justify-content: flex-start;
+        }
+
+        .msg-bottom {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% if session.get('user') %}
+    <a href="{{url_for('addtask',e_id=e_id)}}"><button class="button-52" style="margin-left: 20px;">Go back</button></a> <!-- Adjusted margin -->
+    {% endif %}
+    {% if session.get('vendor') %}
+    <a href="{{url_for('vendor_tasks')}}"><button class="button-52" style="margin-left: 20px;">Go back</button></a> <!-- Adjusted margin -->
+    {% endif %}
+    <h1 style="color: #ff4500;">Welcome to the Chat Panel</h1> <!-- Changed heading color -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-12">
+                <div class="chat-page">
+                    <div class="msg-inbox">
+                        <div class="chat">
+                            <div class="msg-page">
+                                {% for message in sender %}
+                                    <div class="outgoing chats">
+                                        <div class="outgoing-msg">
+                                            <div class="outgoing-chat-msg">
+                                                <p>{{ message[0] }}</p>
+                                                <span class="time">{{ message[1] }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                {% for message in receiver %}
+                                    <div class="incoming chats">
+                                        <div class="incoming-msg">
+                                            <div class="incoming-chat-msg">
+                                                <p>{{ message[0] }}</p>
+                                                <span class="time">{{ message[1] }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form to send a message -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-12">
+                <div class="msg-bottom">
+                    <form method="POST">
+                        <input type="text" class="form-control mt-3" name="subject" placeholder="Write a subject" required/>
+                        <br>
+                        <input type="text" class="form-control mt-3" name="Message" placeholder="Write a message" required/>
+                        <input type="submit" value="Send">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

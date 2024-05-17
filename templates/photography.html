@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <style>
+        div{
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 30px;
+            color:rgb(227, 221, 221);
+            margin-right: 30%;
+            justify-content: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .box{
+            display: block;
+            margin-bottom: 10px;
+        }
+        body{
+            margin-top: 20%;
+            background-position: center;
+            background-size: cover;
+            justify-content: center;
+            background-image: url("https://5.imimg.com/data5/SELLER/Default/2023/8/335286516/BR/BF/KM/155351929/stock-photography-service.jpeg");
+            height: 70vh;
+            background-repeat: no-repeat;
+           
+        }
+        button {
+            background-color: white;
+            color: #141313;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   
+    <div>
+        <center><button><a href="{{url_for('vhome')}}">Homepage</a></button></center>
+        <form method="POST" enctype="multipart/form-data">
+        <label for="cards">Our Recent Gallery</label><br/>
+        <input type="file" id="cards" name="cards" class="box"/>
+        <label for="capacity">No of photos:</label><br />
+        <input type="text" id="catering" name="capacity" class="box" /><br /> 
+        <label for="capacity">Minimum Budget</label>
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <button>submit</button>
+        </form>
+        <script>
+            document.getElementById("eventForm").addEventListener("submit", function(event) {
+                // Get all checked checkboxes
+                var checkboxes = document.querySelectorAll('input[name="Services"]:checked');
+                var servicesArray = [];
+                checkboxes.forEach(function(checkbox) {
+                    servicesArray.push(checkbox.value);
+                });
+    
+                // Add the array of selected services as a hidden input to the form
+                var servicesInput = document.createElement('input');
+                servicesInput.setAttribute('type', 'hidden');
+                servicesInput.setAttribute('name', 'selectedServices');
+                servicesInput.setAttribute('value', servicesArray.join(','));
+                document.getElementById("eventForm").appendChild(servicesInput);
+            });
+        </script>
+    </div>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Box</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<form id="chat-form">
+<div class="chat-container">
+  <div class="chat-box" id="chat-box">
+    <div class="chat-message">
+      <span class="user">User:</span>
+      <span class="message">Hello! How can I help you?</span>
+    </div>
+  </div>
+  <input type="text" id="message-input" name="message" placeholder="Type your message...">
+  <button type="button" onclick="sendMessage()">Send</button> <!-- Change type to button -->
+</div>
+
+<script>
+  function sendMessage() {
+    var messageInput = document.getElementById("message-input");
+    var message = messageInput.value.trim();
+    if (message !== "") {
+        var formData = new FormData();
+        formData.append('message', message);  // Ensure 'message' key is appended correctly
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/receive_message", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send(formData);
+    }
+}
+
+</script>
+</form>
+</body>
+</html>

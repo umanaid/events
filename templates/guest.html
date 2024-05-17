@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 20px;
+            color: black;
+            margin-top: 5%;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #8c0808; /* Change label color */
+            font-weight: bold; /* Make label text bold */
+        }
+        .box {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #0056b3; /* Change input field color */
+        }
+        button {
+            background-color: #9fe316; /* Change button background color */
+            color: white; /* Change button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e412b6; /* Change button background color on hover */
+        }
+        body{
+            background-image: url('/static/guest.jpg');
+        }
+    </style>
+</head>
+<body>
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+
+    <form method="post">
+        <label for="name"><strong>Guest Name</strong></label><br/>
+        <input type="text" id="name" name="name" placeholder="Name" class="box"/> <br/>
+        <label for="name"><strong>Guest Email</strong></label><br/>
+        <input type="text" id="email" name="email" placeholder="Email" class="box"/><br/>
+        <label for="availability"><strong>Sent Invitations:</strong></label><br/>
+        <label1 for="yes">Yes</label1>
+        <input type="radio" id="yes" name="invitation" value="yes">
+        <label2 for="yes">No</label1>
+        <input type="radio" id="no" name="invitation" value="no"><br/>
+        <label for="availability"><strong>RSVP Status:</strong></label><br/>
+        <label1 for="yes">Yes</label1>
+        <input type="radio" id="yes" name="rsvp" value="yes">
+        <label2 for="yes">No</label1>
+        <input type="radio" id="no" name="rsvp" value="no"><br/>
+        <button type="submit">Submit</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:url('https://i.pinimg.com/474x/95/b9/43/95b94352991fbbb1e294ddd494d49bb8.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .container {
+            background-image: url('https://i.pinimg.com/474x/ee/8d/61/ee8d611cfa30f0e9a8c769f61f5708ca.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            max-width: 600px;
+            height: 80%; /* Increased height */
+            margin: auto; /* Center the container vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .container h2 {
+            text-align: center;
+            font-size: 2em;
+        }
+        
+        .container p {
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .container form {
+            text-align: center;
+        }
+        
+        .container form input[type="email"],
+        .container form input[type="submit"] {
+            width: 70%;
+            padding: 4px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .container form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .container form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <h2>Forgot Password</h2>
+        <p>Please enter the email address associated with your account to reset your password:</p>
+        <form action="#" method="post">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <input type="submit" value="Reset Password">
+        </form>
+        <p>Remember your password? <a href="{{url_for('vlogin')}}">Back to Login</a></p>
+    </div>
+</body>
+</html>

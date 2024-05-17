@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <style>
+        div {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 30px;
+            color: white;
+            margin-right: 65%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        body {
+            margin-top: 10%;
+            background-image: url('https://www.srilakshmicaterer.in/assets/images/background/b2.jpg');
+            background-size: cover;
+            height: 80vh;
+            background-repeat: no-repeat;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- catering -->
+
+    <div>
+        <center><button><a href="{{url_for('vhome')}}">Homepage</a></button></center>
+        <form method="POST" enctype="multipart/form-data">
+        <label for="catering">Menu for Starters</label><br />
+        <input type="file" id="catering" name="catering" class="box" /><br />
+        <label for="capacity">capacity</label><br />
+        <input type="text" id="catering" name="capacity" class="box" /><br />
+        <label for="capacity">Minimum Budget</label><br />
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <button>submit</button>
+        </form>
+    </div>
+    <!-- catering -->
+</body>
+
+</html>

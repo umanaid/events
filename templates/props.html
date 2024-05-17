@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Props</title>
+    <style>
+        form{
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 30px;
+            color:black;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        body{
+            margin-top: 5%;
+            background-image: url('https://images.pexels.com/photos/5531658/pexels-photo-5531658.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            height: 50vh;
+            background-repeat: no-repeat;
+            margin-left: 10%;
+
+        }
+        button {
+            background-color: white;
+            color: #130f0f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <center><button><a href="{{url_for('vhome')}}">Homepage</a></button></center>
+    <form method="post" enctype="multipart/form-data">
+        <label for="entertainment">Properties we Provide:</label><br/>
+        <input type="file" id="catering" name="catering" class="box" /><br />
+
+        <label>No of Hours services can be provided:</label>
+        <input type="number" name="capacity" value="capacity" class="box"/><br/>
+        <label for="capacity">Minimum Budget</label><br />
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("eventForm").addEventListener("submit", function(event) {
+            // Get all checked checkboxes
+            var checkboxes = document.querySelectorAll('input[name="Services"]:checked');
+            var servicesArray = [];
+            checkboxes.forEach(function(checkbox) {
+                servicesArray.push(checkbox.value);
+            });
+
+            // Add the array of selected services as a hidden input to the form
+            var servicesInput = document.createElement('input');
+            servicesInput.setAttribute('type', 'hidden');
+            servicesInput.setAttribute('name', 'selectedServices');
+            servicesInput.setAttribute('value', servicesArray.join(','));
+            document.getElementById("eventForm").appendChild(servicesInput);
+        });
+    </script>
+</body>
+</html>

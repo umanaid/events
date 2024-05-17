@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communicate</title>
+  <style>
+    body {
+      background-image: url('/static/addtask.avif');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      width: 20%;
+      font-size: 20px;
+      border: 1px solid #de2121;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 5%;
+      margin-left: 10%;
+      box-shadow: 0 4px 8px rgb(34, 32, 32);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .carding {
+      background-color: #ffffff; /* Change this color as needed */
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: white;
+      color: #130f0f;
+      padding: 5px 20px;
+      border: 1px solid;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 17px;
+      margin-bottom: 10px; /* Add margin to the bottom */
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+    .button-link {
+    display: inline-block; /* Display as block element */
+    padding: 3px 5px; /* Padding */
+    background-color: #1eb384; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove default underline */
+    cursor: pointer; /* Cursor style */
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* Button color on hover */
+}
+
+  </style>
+</head>
+
+<body>
+  {% block content %}
+  <br>
+  <a href="{{url_for('vhome')}}"><button class="button-52">Go back</button></a>
+  <div class="container">
+    <div class="row">
+      {% for i in data %}
+      
+      <form>
+        <div class="col-12 col-md-3"><br>
+          <div class="carding p=3">
+
+            <label><b>Name:</b>{{ i[7] }} </label><br>
+
+
+
+            <label><b>Services:</b>{{i[2]}}</label><br>
+
+            <label><b>Price:</b>{{i[6]}}</label><br>
+
+
+            <a href="{{url_for('message',id1=i[4],e_id=i[1],title=i[2])}}" class="button-link">Communicate</a>
+            <br><br>
+            <a href="{{url_for('view_task',title=i[2],e_id=i[1])}}" class="button-link">VIEW TASK</a><br>
+            <br>
+            <a href="{{url_for('view_customs',title=i[2],e_id=i[1])}}" class="button-link">VIEW Customizations</a><br>
+            <br>
+            <a href="{{url_for('view_guests')}}" class="button-link">VIEW GUESTS</a>
+            
+          </div>
+        </div> 
+      </form>
+      
+
+      {% endfor %}
+
+
+    </div>
+  </div>
+  </div>
+  {% endblock %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Task Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7e508c; /* Fallback background color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-image: url('/static/assign.jpeg'); /* Background image */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .task-details {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .task-details label {
+            font-weight: bold;
+            width: 30%; /* Adjust width as needed */
+            color: #470606c1; /* Label color */
+        }
+
+        .task-details p {
+            margin: 5px 0;
+            width: 70%; /* Adjust width as needed */
+            color: #333; /* Data color */
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button {
+            background-color: #0b0e11;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b7769;
+        }
+    </style>
+</head>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<body>
+    <form method="post">
+        <div class="container">
+            <h1>Task Details</h1>
+            <div class="task-details">
+                <label>Task ID:</label>
+                <p>{{ data[0][0] }}</p>
+                <label>Event ID:</label>
+                <p>{{ data[0][1] }}</p>
+                <label>Title:</label>
+                <p>{{ data[0][2]}}</p>
+                <label>Assigned To:</label>
+                <p>{{ data[0][3] }}</p>
+                <label>User ID:</label>
+                <p>{{ data[0][4] }}</p>
+                <label>Budget ID:</label>
+                <p>{{ data[0][5] }}</p>
+                <label>Total Budget:</label>
+                <p>{{ data[0][6]}}</p>
+                <label>Username:</label>
+                <p>{{ data[0][7]}}</p>
+                <label>Accept Status:</label>
+                <p>{{ data[0][8]}}</p>
+                <label>Completion Status:</label>
+                <p>{{ data[0][9]}}</p>
+
+                {% if not data[0][8] %}
+                <label for="completion_status">Accept Status:</label>
+                <select name="accept_status" id="completion_status" required>
+                    <option value="" disabled selected>Select  status</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">NO</option>
+
+                </select><br>
+                {% endif %}
+
+                <label for="completion_status">Completion Status:</label>
+                <select name="completion_status" id="completion_status" required>
+                    <option value="" disabled selected>Select completion status</option>
+                    <option value="To_start">To Start</option>
+                    <option value="Inprogress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="not yet taken">Not yet taken</option>
+                </select><br>
+            </div>
+            <button type="submit">Submit</button>
+            <div class="button-container">
+                <button onclick="window.history.back()">Go Back</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

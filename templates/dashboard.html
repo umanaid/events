@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communicate</title>
+    <style>
+        body {
+            background-image: url('/static/addtask.avif'); /* Replace '/path/to/your/background/image.jpg' with the actual path to your background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 20%;
+            font-size: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 5%;
+            margin-left: 10%;
+            box-shadow: 0 4px 8px rgb(34, 32, 32);
+        }
+        .carding {
+      background-color: #ffffff; /* Change this color as needed */
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+
+        button {
+            background-color: rgb(10, 128, 197);
+            color: #130f0f;
+            padding: 5px 20px;
+            border: 1px solid;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<body>
+    {% block content %}
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+    <div class="container">
+        <div class="row">
+            {% for i in l %}
+            <form>
+                <div class="col-12 col-md-3"><br>
+                    <div class="carding p=3">
+
+                        <label><b>Name:</b>{{ i[3] }} </label><br>
+
+
+
+                        <label><b>Services:</b>{{i[1]}}</label><br>
+
+                        <label><b>Price:</b>{{i[2]}}</label><br>
+                        <label><b>Contact:</b>{{i[5]}}</label><br>
+
+
+    
+
+                        <button class="viewImageButton" data-image-url="{{ url_for('static', filename=i[4]) }}">View Image</button>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var viewImageButtons = document.querySelectorAll(".viewImageButton");
+
+                                viewImageButtons.forEach(function(button) {
+                                    button.addEventListener("click", function(event) {
+                                        event.preventDefault(); // Prevent the default behavior of anchor tags
+
+                                        var imageSrc = this.dataset.imageUrl; // Get the image URL from the button's data attribute
+                                        var image = new Image();
+                                        image.src = imageSrc;
+                                        image.onload = function() {
+                                            window.open(imageSrc, "_blank"); // Open the image in a new tab
+                                        };
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </form>
+
+
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+    </div>
+    {% endblock %}
+
+
+</body>
+
+</html>

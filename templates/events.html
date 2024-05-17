@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .btn1 {
+            margin-top: 2%;
+            width: 30%;
+            border-radius: 10px;
+            color: rgb(75, 4, 97);
+        }
+
+        body {
+            margin-top: 2%;
+            background-image: url('https://www.shutterstock.com/image-photo/wedding-invitation-event-planning-background-260nw-2250949339.jpg');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            background-repeat: no-repeat;
+            color: rgb(75, 10, 136);
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<body>
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+
+    <div class="container">
+        <div class="admin-product-form-container">
+            <form method="POST" enctype="multipart/form-data">
+                <center>
+                
+                    <h1>Events</h1>
+
+                    <button class="btn1"><a href="{{url_for('eventdetails',user=count[0])}}">Add Event</button></a><br />
+                    <button class="btn1"><a href="{{url_for('showevents',userid=count[0])}}">Show Events</button></a><br />
+                    
+                </center>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

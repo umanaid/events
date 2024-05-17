@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/guest.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 90%;
+            margin: 100px auto; /* Adjust table margin as needed */
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd; /* Border color */
+        }
+        th {
+            background-color: #f2f2f2; /* Header background color */
+            color: #333; /* Header text color */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternate row background color */
+        }
+        tr:hover {
+            background-color: #f5f5f5; /* Row background color on hover */
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<body>
+    <table>
+        <tr>
+            <th>event_id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>invitation_sent</th>
+            <th>rsvp_status</th>
+        </tr>
+        {% for i in guests %}
+        <tr>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

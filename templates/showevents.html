@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Events </title>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center><b>{{ message }}</b></center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<body>
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+
+    
+    <center>
+        <table border="1px" cellpadding="20px" cellspacing="0px" style="margin-top: 100px;">
+            <tr>
+                <th>event_id</th>
+                <th>user_id</th>
+                <th>title</th>
+                <th>date</th>
+                <th>location</th>
+                <th>Services</th>
+                <th>description</th>
+                <th>Guest List</th>
+                
+
+            </tr>
+            {% for i in events %}
+            <tr>
+              <td>{{i[0]}}</td>
+              <td>{{i[1]}}</td>
+              <td>{{i[2]}}</td>
+              <td>{{i[3]}}</td>
+              <td>{{i[5]}}</td>
+              <td>{{i[8]}}</td>
+
+              <td><a href="{{url_for('addtask',e_id=i[0])}}">Add Task</a></td>
+              <td><a href="{{url_for('guests',e_id=i[0],u_id=i[1])}}">Add Guest</a></td>
+            </tr>
+              {% endfor %}
+        </table>
+    </center>
+    
+</body>
+</html>

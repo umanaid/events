@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planning Services</title>
+    <style>
+        body {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color:#f29f9f;
+            padding: 50px;
+            text-align:center;
+            background-image: url('https://i.pinimg.com/474x/60/09/e8/6009e85b2fd33596e758107739a42314.jpg');
+            background-size:cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-size: 1.2em;
+        }
+
+        nav {
+            background-color: #f6a1a1;
+            padding: 7px;
+            text-align:end;
+            position: fixed;
+            width: 94%;
+            top: 0;
+            z-index: 1000; 
+        }
+        nav a {
+            text-decoration:none;
+            color: #333;
+            padding:5px;
+        }
+        nav a:hover {
+            background-color: #f49595;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding:80px 20px 20px;
+        }
+        .content {
+            text-align: center;
+            color: #fff;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .services-heading {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .service {
+            position: relative;
+            width: calc(25% - 20px); /* 25% width with margin */
+            margin: 10px;
+            overflow: hidden;
+        }
+        .service img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .service .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            transition: 0.5s ease;
+        }
+        .service:hover .text {
+            bottom: -50px;
+        }
+        .service h5 {
+            margin-top: 0;
+        }
+        .vendors-heading {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .vendors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+        }
+        .vendor {
+    position: relative;
+    width: calc(25% - 40px);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.vendor .profile-pic {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.vendor .vendor-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    transition: bottom 0.5s ease;
+}
+
+.vendor:hover .vendor-info {
+    bottom: 0;
+}
+
+        .vendor:hover .text-overlay {
+            bottom: 0; /* Adjusted to show text overlay on hover */
+        }
+        .vendor h7, .vendor p {
+            margin: 5px 0;
+        }
+        .vendor .rating {
+            font-size: 0.8em;
+        }
+        .vendor .price {
+            font-weight: bold;
+        }
+        #about {
+            background-color: #f9f9f9;
+            padding: 80px 20px;
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 60vh; /* Adjust minimum height for better visibility */
+        }
+
+        #about .container {
+            max-width: 960px;
+            text-align: center;
+        }
+        #about h2 {
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        #about p {
+            text-align: justify;
+        }
+        .contact-heading {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .contains {
+            max-width: 800px;
+            margin: 50px auto; /* Adjusted margin */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items to the start of the flex container */
+        }
+        .contact-info,
+        .contact-form {
+            flex: 0 0 40%;
+            padding: 0 10px; /* Add padding to each item for spacing */
+        }
+        h8 {
+            margin-top: 0;
+        }
+        .contact-info h9 {
+            margin-bottom: 45px 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .contact-info p {
+            margin: 45px 0;
+        }
+        .contact-form label {
+            display: block;
+            font-weight: bold;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .contact-form textarea {
+            height: 100px;
+        }
+        .contact-form input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .contact-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+    background-color: #f0efef;
+    color: #0a0a0a;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-around;
+        }
+        .exploreimage {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin-right: 15px;
+                }
+
+        .box {
+            width: 285px;
+        }
+
+        .box h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .box a {
+            display: block;
+            color: #272626;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .box a i {
+            margin-right: 10px;
+        }
+
+    </style>
+  </body>
+</html>
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="#" class="logo"><span>Elegant</span> Events</a>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#vendors">Vendors</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        </header>
+    <header>
+        <div id="home">
+        <h1>Elegant Edge Events</h1>
+        <p>Your ultimate destination for flawless events</p>
+        <h2>Vendors Block</h2>
+        <a href="{{url_for('vsignup')}}"><button>Signup</button></a>
+        <a href="{{url_for('vlogin')}}"><button>Login</button></a>
+        <h3>Clients Block</h3>
+        <a href="{{url_for('signup')}}"><button>Signup</button></a>
+        <a href="{{url_for('login')}}"><button>Login</button></a>
+    </div>
+    </header>
+    <h4 id="services" class="services-heading">OUR SERVICES</h4>
+    <div class="services">
+        <div class="service">
+            <a href="{{url_for('dashboard',type='catering')}}"><img src="https://i.pinimg.com/474x/88/50/ea/8850ea685cf18e8ad48758a6164269a1.jpg" alt="Service 1"></a>
+            <div class="text">
+                <h5>Catering</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='venue')}}"><img src="https://i.pinimg.com/474x/c5/ba/6d/c5ba6d455fc5aa95f581976ff9ce5ed6.jpg" alt="Service 2"></a>
+            <div class="text">
+                <h5>Venue</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='decoration')}}"><img src="https://i.pinimg.com/474x/3f/ff/5d/3fff5d65556d729dd192462d0a27e5dd.jpg" alt="Service 3"></a>
+            <div class="text">
+                <h5>Decoration</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='invitations')}}"><img src="https://i.pinimg.com/474x/14/02/98/1402986e89cc82d8e7d567c744c2aa71.jpg" alt="Service 4"></a>
+            <div class="text">
+                <h5>Invitations</h5>
+
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='entertainment')}}"><img src="https://i.pinimg.com/474x/7e/7a/87/7e7a872bebc21840ebe1d1e099aa646b.jpg" alt="Service 5"></a>
+            <div class="text">
+                <h5>Entertainment</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='beauty')}}"><img src="https://i.pinimg.com/474x/6f/19/88/6f198805558dbca2b47d2402e9965295.jpg" alt="Service 6"></a>
+            <div class="text">
+                <h5>Makeover</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='props')}}"><img src="https://i.pinimg.com/474x/d5/d6/8b/d5d68bb5b1c9b3632b70f37adc6d60e2.jpg" alt="Service 7"></a>
+            <div class="text">
+                <h5>Props</h5>
+            </div>
+        </div>
+        <div class="service">
+            <a href="{{url_for('dashboard',type='photos')}}"><img src="https://i.pinimg.com/474x/e7/06/25/e706257eeffdfcc96aec921275bf91b6.jpg" alt="Service 8"></a>
+            <div class="text">
+                <h5>Photography</h5>
+        
+    </div>
+</div>
+                <h6 id="vendors" class="vendors-heading">OUR VENDORS</h6>
+            {% if count %}
+            
+            <div class="vendors">
+                {% for vendor in count %}
+                <div class="vendor">
+                    <a href="{{ url_for('profile', type=vendor[0]) }}">
+                        <img src="{{ url_for('static', filename='vendor[7]') }}" alt="Profile Picture" class="profile-pic">
+                    </a>
+                    <div class="text-overlay">
+                        <h7>{{ vendor[1] }}</h7>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+                {% else %}
+                <p>No vendors available.</p>
+                {% endif %}
+        
+            
+            <section id="about">
+                <div class="container">
+                    <h2>ABOUT US</h2>
+                    <p>Welcome to Elegant Edge Events, where we turn your dream events into reality! With years of experience in the event planning industry, we specialize in creating unforgettable moments for our clients. From weddings and corporate gatherings to birthdays and special occasions, we are dedicated to delivering exceptional service and attention to detail.</p>
+                    <p>Our team of passionate professionals works tirelessly to bring your vision to life, ensuring every aspect of your event is meticulously planned and executed. Whether you're looking for stunning decorations, exquisite catering, or top-notch entertainment, we have you covered.</p>
+                    <p>At Elegant Edge Events, we believe that every event should be a reflection of your unique style and personality. That's why we strive to tailor our services to meet your specific needs, creating an experience that exceeds your expectations.</p>
+                    <p>Thank you for considering Elegant Edge Events for your next special occasion. We look forward to helping you create memories that will last a lifetime!</p>
+                </div>
+            </section>
+
+            <section id="contact">
+            <div class="contains">
+                <div class="contact-info">
+                    <h9>Contact Information</h9>
+                    <p><strong>Address:</strong> 123 Main Street, City, State, Zip Code</p>
+                    <p><strong>Email:</strong> info@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                </div>
+                
+            </div>
+        </section>
+            
+            <!-- footer section starts  -->
+      <section class="footer">
+        <div class="box">
+          <h3>Branches</h3>
+          <a href="#"> <i class="fas fa-map-marker-alt"></i> Vijayawada </a>
+          <a href="#"> <i class="fas fa-map-marker-alt"></i> Hyderabad </a>
+          <a href="#"> <i class="fas fa-map-marker-alt"></i> Visakhapatnam </a>
+          <a href="#"> <i class="fas fa-map-marker-alt"></i> Banglore </a>
+        </div>
+        <div class="box">
+          <h3>Quick Links</h3>
+          <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> service </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> about </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> gallery </a>
+          <a href="#"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+        <div class="box">
+          <h3>Contact Info</h3>
+          <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+          <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+          <a href="#"> <i class="fas fa-envelope"></i> akhila@gmail.com </a>
+          <a href="#"> <i class="fas fa-envelope"></i> vanajakshidoddi@gmail.com </a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i> Vijayawada, india - 560054
+          </a>
+        </div>
+        <div class="box">
+          <h3>Follow Us</h3>
+          <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="#"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </section>
+                  
+</body>
+</html>
+
+
+

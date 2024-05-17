@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <style>
+        div{
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 30px;
+            color:aliceblue;
+            margin-right: 65%;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .box{
+            display: block;
+            margin-bottom: 10px;
+        }
+        body{
+            margin-top: 10%;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/009/294/942/small/golden-luxury-ornamental-mandala-background-design-with-vintage-wedding-invitation-card-pattern-free-vector.jpg');
+            background-size: cover;
+            height: 70vh;
+            background-repeat: no-repeat;
+            margin-left: 60%;
+
+        }
+        button {
+            background-color: white;
+            color: #130f0f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+        <label for="cards">Few of our Card Models</label><br/>
+        <input type="file" id="cards" name="cards" class="box"/>
+        <label for="capacity">Minimum number of cards that can be provided:</label><br />
+        <input type="text" id="catering" name="capacity" class="box" /><br /> 
+        <label for="capacity">Minimum Budget</label>
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <button>submit</button>
+        </form>
+    </div>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <style>
+        div {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 30px;
+            color: black;
+            margin-right: 65%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        body {
+            margin-top: 10%;
+            background-image: url("https://images.lifestyleasia.com/wp-content/uploads/sites/7/2023/02/15174409/wedding-venue-hero-1600x900.jpg");
+            background-size: cover;
+            height: 80vh;
+            background-repeat: no-repeat;
+
+        }
+        button {
+            background-color: white;
+            color: #130f0f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <center><button><a href="{{url_for('vhome')}}">Homepage</a></button></center>
+
+        <form method="POST" enctype="multipart/form-data">
+        <label for="catering">Venues Provided:</label><br />
+        <input type="file" id="catering" name="venue" class="box" /><br />
+        <label for="capacity">capacity</label><br />
+        <input type="text" id="catering" name="capacity" class="box" /><br />
+        <label for="capacity">Minimum Budget</label><br />
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <button>submit</button>
+        <!-- <label for="catering">Menu for drinks</label><br/>
+        <input type="file" id="catering" name="catering" class="box"/><br/>
+        <label for="catering">Menu for Main Course </label><br/>
+        <input type="file" id="catering" name="catering" class="box"/><br/> -->
+        </form>
+    </div>
+</body>
+
+</html>

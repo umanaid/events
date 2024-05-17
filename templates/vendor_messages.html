@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Messages</title>
+</head>
+<body>
+    <h1>Vendor Messages</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-12">
+                <div class="chat-page">
+                    <div class="msg-inbox">
+                        <div class="chat">
+                            <div class="msg-page">
+                                {% for message in sender_messages %}
+                                <div class="incoming chats">
+                                    <div class="incoming-msg">
+                                        <div class="incoming-chat-msg">
+                                            <p>{{ message[0] }}</p> <!-- Display message body -->
+                                            <span class="time">{{ message[1] }}</span> <!-- Display sent time -->
+                                            <span class="user-id">Sent by User ID: {{ message[2] }}</span> <!-- Display sender ID -->
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form to reply to messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-12">
+                <div class="msg-bottom">
+                    <form method="POST">
+                        <input type="hidden" name="SenderId" id="senderId" value=""> <!-- Hidden field to store sender ID -->
+                        <input type="text" class="Form-control mt-3" name="Message" id="replyMessage" placeholder="Write a reply" required/>
+                        <input type="submit" value="Send">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to set sender ID in the hidden field when replying
+        function setSenderId(senderId) {
+            document.getElementById('senderId').value = senderId;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <style>
+        body{
+            background-image: url('https://zdblogs.zohowebstatic.com/sites/backstage/thegreenroom/files/2020-10/joanna-kosinska-I3adKpDNAjM-unsplash-1536x1025.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            color: black;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .box {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: white;
+            color: #130f0f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+
+    <h1 style="justify-content: center;display: flex;align-content: center; ">Event Details</h1>
+    <form  method="POST">
+        <label for="event">Event Name:</label>
+        <input type="text" id="event" name="purpose" placeholder="Title" class="box" required>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" placeholder="Date" class="box" required>
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" placeholder="Time" class="box" required>
+        <label for="budget">Budget:</label>
+        <input type="text" id="budget" name="budget" placeholder="Budget " class="box" required>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" placeholder="Location" class="box" required>
+        <label for="entertainment">Services Needed:</label><br/>
+        <input type="checkbox" name="Services" value='Catering'class="s1"/>Catering
+        <input type="checkbox" name="Services"  value='Entertainment'class="s1"/>Entertainment
+        <input type="checkbox" name="Services"  value='Venue'class="s1"/>Venue<br/>
+        <input type="checkbox" name="Services"  value='Decoration'class="s1"/>Decoration
+        <input type="checkbox" name="Services"  value='Props'class="s1"/>Props
+        <input type="checkbox" name="Services"  value='Invitations'class="s1"/>Invitation Cards<br/>
+        <label for="description" >Description:</label>
+        <textarea id="des" name="description" rows="5" style="width: 90%;"></textarea>
+        
+        
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("eventForm").addEventListener("submit", function(event) {
+            // Get all checked checkboxes
+            var checkboxes = document.querySelectorAll('input[name="Services"]:checked');
+            var servicesArray = [];
+            checkboxes.forEach(function(checkbox) {
+                servicesArray.push(checkbox.value);
+            });
+
+            // Add the array of selected services as a hidden input to the form
+            var servicesInput = document.createElement('input');
+            servicesInput.setAttribute('type', 'hidden');
+            servicesInput.setAttribute('name', 'selectedServices');
+            servicesInput.setAttribute('value', servicesArray.join(','));
+            document.getElementById("eventForm").appendChild(servicesInput);
+        });
+    </script>
+</body>
+</html>

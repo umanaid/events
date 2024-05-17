@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customization Form</title>
+    <style>
+        body {
+            background-image: url('/static/cust.jpg'); /* Replace 'background.jpg' with your image file path */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif; /* Change the font family as needed */
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+            max-width: 400px; /* Limit form width */
+            width: 100%;
+        }
+
+        label,
+        textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue submit button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="{{url_for('addtask',e_id=e_id)}}"><button class="button-52">Go back</button></a>
+
+    <h1>Customization Form</h1>
+    <form action="{{url_for('save_customization',id2=id2,id1=id1,e_id=e_id,title=title)}}" method="POST">
+        <label for="event_details_customization">Event Details Customization:</label><br>
+        <textarea id="event_details_customization" name="event_details_customization"></textarea><br>
+
+        <label for="branding_customization">Branding Customization:</label><br>
+        <textarea id="branding_customization" name="branding_customization"></textarea><br>
+
+        <label for="communication_templates_customization">Communication Templates Customization:</label><br>
+        <textarea id="communication_templates_customization" name="communication_templates_customization"></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

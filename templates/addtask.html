@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communicate</title>
+  <style>
+    body {
+      background-image: url('/static/addtask.avif');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      width: 20%;
+      font-size: 20px;
+      border: 1px solid #de2121;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 5%;
+      margin-left: 10%;
+      box-shadow: 0 4px 8px rgb(34, 32, 32);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .carding {
+      background-color: #ffffff; /* Change this color as needed */
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: white;
+      color: #130f0f;
+      padding: 5px 20px;
+      border: 1px solid;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 17px;
+      margin-bottom: 10px; /* Add margin to the bottom */
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+    .button-link {
+    display: inline-block; /* Display as block element */
+    padding: 10px 20px; /* Padding */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove default underline */
+    cursor: pointer; /* Cursor style */
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* Button color on hover */
+}
+
+  </style>
+</head>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<body>
+  {% block content %}
+  <br>
+  <div style="margin-left: 10px; margin-top: 10px;"> <!-- Adjusted margin for the button -->
+    <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% for i in l %}
+      {% if i %}
+      {% for vendor in i %}
+      <form>
+        <div class="col-12 col-md-3"><br>
+          <div class="carding p=3">
+
+            <label><b>Name:</b>{{ vendor[3] }} </label><br>
+
+            <label><b>Services:</b>{{vendor[1]}}</label><br>
+
+            <label><b>Price:</b>{{vendor[2]}}</label><br>
+            
+            <!--<img src="{{url_for('static',filename=vendor[4])}}" height="100" width="100" class="exploreimage w-100"/>-->
+            <a class="button-link" href="{{url_for('umessage',id1=vendor[0],e_id=e_id,title=vendor[1])}}">Communicate</a>
+            <br><br>
+            <a class="button-link" href="{{url_for('task',id1=vendor[0],e_id=e_id,title=vendor[1])}}">Assign TASK</a>
+            <br><br>
+            <a class="button-link" href="{{url_for('customization_form',id2=id2,id1=vendor[0],e_id=e_id,title=vendor[1])}}">Custom</a>
+            <br><br>
+            <button class="viewImageButton" data-image-url="{{ url_for('static', filename=vendor[4]) }}">View Image</button>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                var viewImageButtons = document.querySelectorAll(".viewImageButton");
+                
+                viewImageButtons.forEach(function(button) {
+                  button.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    
+                    var imageSrc = this.dataset.imageUrl;
+                    var image = new Image();
+                    image.src = imageSrc;
+                    image.onload = function() {
+                      window.open(imageSrc, "_blank");
+                    };
+                  });
+                });
+              });
+            </script>
+          </div>
+        </div> 
+      </form>
+      {% endfor %}
+
+      {% endif %}
+
+
+      {% endfor %}
+
+
+    </div>
+  </div>
+  </div>
+  {% endblock %}
+
+
+</body>
+
+</html>

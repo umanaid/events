@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/signup.css">
+  <title>Document</title>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+
+  <form method="POST" class="form" enctype="multipart/form-data">
+    <h3>Sign Up</h3>
+    <div class="input-field">
+      <i class="fa fa-envelope"></i>
+      <input type="text" name="name" placeholder="Enter your Name">
+    </div>
+    <div class="input-field">
+      <i class="fa fa-lock"></i>
+      <input type="text" name="mobile" placeholder="Enter Mobile Number">
+    </div>
+    <div class="input-field">
+      <i class="fa fa-envelope"></i>
+      <input type="text" name="email" placeholder="Enter your email">
+    </div>
+    <div class="input-field">
+      <i class="fa fa-envelope"></i>
+      <input type="text" name="address" placeholder="Enter your Address">
+    </div>
+    <div class="input-field">
+      <i class="fa fa-envelope"></i>
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <label for="entertainment">Services Provided:</label><br/>
+    <div class="checkboxes">
+      <input type="checkbox" name="Services" value='Catering' class="s1"/><label>Catering</label>
+      <input type="checkbox" name="Services" value='Entertainment' class="s1"/><label>Entertainment</label>
+      <input type="checkbox" name="Services" value='Venue' class="s1"/><label>Venue</label><br/>
+      <input type="checkbox" name="Services" value='Decoration' class="s1"/><label>Decoration</label>
+      <input type="checkbox" name="Services" value='Props' class="s1"/><label>Props</label>
+      <input type="checkbox" name="Services" value='Invitations' class="s1"/><label>Invitation Cards</label><br/>
+      <input type="checkbox" name="Services" value='photos' class="s1"/><label>Photography</label><br/>
+      <input type="checkbox" name="Services" value='beauty' class="s1"/><label>Make-over</label><br/>
+
+    </div>
+    <label for="catering">Upload Picture:</label><br />
+        <input type="file" name="profile_pic" class="box" /><br />
+    <button>Sign up</button>
+    <a href="{{url_for('vlogin')}}" target="_blank">Already Have an Account?</a> 
+  </form>
+</body>
+</html>

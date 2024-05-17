@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/profile.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        form {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        img.profile-pic {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .profile-details {
+            text-align: left;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .profile-details label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .button-link {
+            display: inline-block;
+            background-color: rgb(31, 135, 233);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove default link underline */
+            margin-right: 10px;
+        }
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <center>
+        <a href="{{url_for('home')}}"><button class="button-52">Go back</button></a>
+
+        {% if session.get('vendor') %}
+        <a href="{{url_for('update_profile',type=count[0])}}" class="button-link">Update Profile</a>
+        {% endif %}
+    </center>
+    <h1>Profile</h1>
+    <div class="container">
+        <form method="POST">
+            <img src="{{ url_for('static',filename=count[5]) }}" alt="Profile Picture" class="profile-pic">
+            <div class="profile-details">
+                <label>Vendor Name:</label>
+                {{ count[1] }}<br>
+                <label>Mobile:</label>
+                {{ count[2] }}<br>
+                <label>Email:</label>
+                {{ count[3] }}<br>
+                <label>Services:</label>
+                {% for i in  count[4] %}
+                {{i}}<br>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
